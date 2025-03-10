@@ -11,6 +11,6 @@ class Program
         while (number != 0) ;
         {
         string number = Console.ReadLine();
-           strin
+           string 
         }
 }
