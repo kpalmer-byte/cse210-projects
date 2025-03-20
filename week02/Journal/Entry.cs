@@ -6,9 +6,9 @@ public class Entry
     public string _entryType;
     public void Display()
     {
+        Console.WriteLine($"{_entryType}");  // Display Entry Type
         Console.WriteLine($"{_date}");
         Console.WriteLine($"{_promptText}");
         Console.WriteLine($"{_entryText}");
-        Console.WriteLine($"{_entryType}");  // Display Entry Type
     }
 }
