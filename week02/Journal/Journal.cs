@@ -23,7 +23,7 @@ public class Journal
         {
             foreach (Entry entry in _entries)
             {
-                outputFile.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}");
+                outputFile.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}|{entry._entryType}");
             }
         }
     }
@@ -41,26 +41,14 @@ public class Journal
                 {
                     _date = parts[0],
                     _promptText = parts[1],
-                    _entryText = parts[2]
+                    _entryText = parts[2],
+                    _entryType = parts[3]
                 };
 
                 _entries.Add(entry);
+                
             }
         }
     }
-    public void DisplayFileContents(string filePath)
-    {
-        if (File.Exists(filePath))
-        {
-            string[] lines = File.ReadAllLines(filePath);
-            foreach (string line in lines)
-            {
-                Console.WriteLine(line);
-            }
-        }
-        else
-        {
-            Console.WriteLine("File does not exist.");
-        }
-    }
+       
 }

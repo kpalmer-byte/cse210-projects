@@ -1,16 +1,17 @@
 using System;
+using System.Formats.Tar;
 
 class Program
 {
     static void Main(string[] args)
     {
-        string[] menu = { "Write", "Display", "Load", "Save", "View File", "Quit" };
+        string[] menu = { "Write", "Display", "Load", "Save", "Quit" };
         int action = 0;
 
         Journal myJournal = new Journal();
         PromptGenerator promptGen = new PromptGenerator();
 
-        while (action != 6)
+        while (action != 5)
         {
             Console.WriteLine("Please select one of the following:");
 
@@ -19,7 +20,7 @@ class Program
                 Console.WriteLine($"{i + 1}. {menu[i]}");
             }
 
-            Console.Write("Enter (1-6): ");
+            Console.Write("Enter (1-5): ");
             int input = int.Parse(Console.ReadLine());
             action = input;
 
@@ -34,10 +35,16 @@ class Program
                 DateTime theCurrentTime = DateTime.Now;
                 string dateText = theCurrentTime.ToShortDateString();
 
+                // Added Creativity: Prompt the user to input an entry type
+                Console.Write("Enter entry type (e.g., Emotional, Work, Family, Spiritual): ");
+                string entryType = Console.ReadLine();
+
+
                 Entry entry = new Entry();
                 entry._date = dateText;
                 entry._promptText = prompt;
                 entry._entryText = entryText;
+                entry._entryType = entryType;
 
                 myJournal.AddEntry(entry);
                 Console.WriteLine("Entry added!");
@@ -66,13 +73,6 @@ class Program
                 string savePath = Console.ReadLine();
                 myJournal.SaveToFile(savePath);
                 Console.WriteLine("Entries saved!");
-            }
-
-            else if (action == 5) // Display file contents 
-            {
-                Console.Write("Enter the file path to view: ");
-                string filePath = Console.ReadLine();
-                myJournal.DisplayFileContents(filePath);
             }
             
         }
