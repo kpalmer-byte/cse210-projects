@@ -3,7 +3,7 @@ using System;
 public class Scripture
 {
     Reference _reference;
-    List<Word> _words;
+    private List<Word> _words;
 
     public Scripture(Reference reference, string text)
     {
