@@ -16,23 +16,23 @@ public class Scripture
     }
 
     public void HideRandomWords(int numberToHide)
-{
-    Random random = new Random();
-    int wordsHidden = 0; 
-
-    while (wordsHidden < numberToHide)
     {
-        int index = random.Next(_words.Count);  
+        Random random = new Random();
+        int wordsHidden = 0; 
 
-        if (!_words[index].IsHidden()) 
+        while (wordsHidden < numberToHide)
         {
-            _words[index].Hide();
-            wordsHidden++; 
-        }
+            int index = random.Next(_words.Count);  
 
-        if (IsCompletelyHidden()) break; 
+            if (!_words[index].IsHidden()) 
+            {
+                _words[index].Hide();
+                wordsHidden++; 
+            }
+
+            if (IsCompletelyHidden()) break; 
+        }
     }
-}
 
     public string GetDisplayText()
     {
